@@ -1,0 +1,55 @@
+
+* connection to ftdi
+
+| ftdi | lilypad - zigbee                      |
+|------+---------------------------------------|
+| gnd  | gnd                                   |
+| cts  | -                                     |
+| rx   | rx (не перекрещенные толерантные к 5) |
+| tx   | tx (не перекрещенные толерантные к 5) |
+| 3.3  | 3.3                                   |
+| dtr  | -                                     |
+
+* library
+
+x-ctu wine
+file:///home/store/documents/net-wireless/ZigBee/x-ctu/Buck_Up_Chinny-_X-CTU_with_Linux.maff
+
+
+adc with and without microcontrollr
+file:///home/store/documents/net-wireless/ZigBee/how-to/Rob_Faludi_ITP-_XBee_ZigBee_2010.maff
+
+настройка DH DL MY CH ID
+file:///home/store/documents/net-wireless/ZigBee/arduino/Arduino_-_ArduinoXbeeShield.maff
+
+
+file:///home/store/documents/net-wireless/ZigBee/arduino/Arduino_Wireless_Xbee_»_ArduinoFun.com_Blog_-_-_Think_It_–_Build_It_–_Share_It_-.maff
+
+comp->xbee ... xbee->midi
+file:///home/store/documents/net-wireless/ZigBee/arduino/XBee_adapter_-_Simple_wireless_communication.maff
+
+packet structure
+file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_XBee_Series_2_-_Reading_Data_in_API_Mode.maff
+
+example
+file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_Xbee_Adapter_Kit.maff
+
+chat
+file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_Xbee_Chat.maff
+
+2 arduino 2 xbee
+file:///home/store/documents/net-wireless/ZigBee/hex705/Communicating_with_Xbees_«_hex705.maff
+
+config xbee
+file:///home/store/documents/net-wireless/ZigBee/hex705/Xbee_–_configuring_the_radios_«_hex705.maff
+
+
+datasheet
+file:///home/store/documents/net-wireless/ZigBee/schematic/Модуль_XBee_Pro_50mW_Series_2.5_со_встроенной_антенной_-_Свободные_микроконтроллеры_Arduino.maff
+
+
+
+Unix format (Line feed [\n]) to DOS format (carriage return [\r] + Line feed [\n])
+
+ATWR⏎ –> write settings to firmware
+ATCN⏎ -> leave command mode
