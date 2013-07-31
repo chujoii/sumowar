@@ -1,3 +1,33 @@
+xbee.org --- how to use Xbee radio module; setup to rotation scanner
+
+
+
+Copyright (C) 2012 Roman V. Prikhodchenko
+
+
+
+Author: Roman V. Prikhodchenko <chujoii@gmail.com>
+
+
+
+  This file is part of markerway.
+
+  markerway is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  markerway is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with markerway.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
 * connection to computer (FT232RL)
 
 | ftdi | lilypad - zigbee |
@@ -60,9 +90,9 @@ Air, Earth - Xbee Series 2
    ATSL
    >>>> ABCDEF12
    
-   ATID 3
-   ATDH 0
-   ATDL 7
+   ;; ATID 3 ???????
+   ATDH 123456
+   ATDL ABCDEF01
    ATWR
    ATCN
    
@@ -76,9 +106,9 @@ Air, Earth - Xbee Series 2
    ATSL
    >>>> ABCDEF01
    
-   ATID 7
-   ATDH 0
-   ATDL 3
+   ;; ATID 7 ???????
+   ATDH 123456
+   ATDL ABCDEF12
    ATWR
    ATCN
    
