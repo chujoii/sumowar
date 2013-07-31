@@ -1,55 +1,150 @@
-
-* connection to ftdi
-
-| ftdi | lilypad - zigbee                      |
-|------+---------------------------------------|
-| gnd  | gnd                                   |
-| cts  | -                                     |
-| rx   | rx (не перекрещенные толерантные к 5) |
-| tx   | tx (не перекрещенные толерантные к 5) |
-| 3.3  | 3.3                                   |
-| dtr  | -                                     |
-
 * library
 
-x-ctu wine
+** x-ctu wine
 file:///home/store/documents/net-wireless/ZigBee/x-ctu/Buck_Up_Chinny-_X-CTU_with_Linux.maff
 
 
-adc with and without microcontrollr
+ adc with and without microcontrollr
 file:///home/store/documents/net-wireless/ZigBee/how-to/Rob_Faludi_ITP-_XBee_ZigBee_2010.maff
 
-настройка DH DL MY CH ID
+ настройка DH DL MY CH ID
 file:///home/store/documents/net-wireless/ZigBee/arduino/Arduino_-_ArduinoXbeeShield.maff
 
-
+ ?
 file:///home/store/documents/net-wireless/ZigBee/arduino/Arduino_Wireless_Xbee_»_ArduinoFun.com_Blog_-_-_Think_It_–_Build_It_–_Share_It_-.maff
 
-comp->xbee ... xbee->midi
+ comp->xbee ... xbee->midi
 file:///home/store/documents/net-wireless/ZigBee/arduino/XBee_adapter_-_Simple_wireless_communication.maff
 
-packet structure
+ packet structure
 file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_XBee_Series_2_-_Reading_Data_in_API_Mode.maff
 
-example
+ example
 file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_Xbee_Adapter_Kit.maff
 
-chat
+ chat
 file:///home/store/documents/net-wireless/ZigBee/buck_up_chinny/Buck_Up_Chinny-_Xbee_Chat.maff
 
-2 arduino 2 xbee
+ 2 arduino 2 xbee
 file:///home/store/documents/net-wireless/ZigBee/hex705/Communicating_with_Xbees_«_hex705.maff
 
-config xbee
+ config xbee
 file:///home/store/documents/net-wireless/ZigBee/hex705/Xbee_–_configuring_the_radios_«_hex705.maff
 
+ config xbee for communicating between two arduinos
+file:///home/store/documents/net-wireless/ZigBee/schematic/How_to_use_xbees_with_arduino_-_Community_of_Robots.maff
 
-datasheet
+
+ datasheet
 file:///home/store/documents/net-wireless/ZigBee/schematic/Модуль_XBee_Pro_50mW_Series_2.5_со_встроенной_антенной_-_Свободные_микроконтроллеры_Arduino.maff
 
+ main datasheet
+file:///home/store/documents/net-wireless/ZigBee/datasheet/XBee_ZB_-_Digi_International_2013-07-09.maff
+
+** AT command
+file:///home/store/documents/net-wireless/ZigBee/datasheet/22AT%20Commands.pdf
 
 
-Unix format (Line feed [\n]) to DOS format (carriage return [\r] + Line feed [\n])
 
-ATWR⏎ –> write settings to firmware
-ATCN⏎ -> leave command mode
+** Xbee "долго думает"
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Xbee_долго_думает.maff
+   
+   andy-k » 20 янв 2011, 10:52
+
+   Может конечно я что не так сделал, но первый раз действуя по их
+   инструкции настраивал модули, скажем так, как для работы в сети. То
+   есть координатор и конечное устройство, у каждого свои имена и при
+   таком раскладе есть возможность подключения других узлов. Без
+   настройки роута такая сетка не заработает. Там для роута есть свои
+   команды и надо запускать их на каждом устройстве указывая
+   параметром ID того узла, куда хочешь прописать маршрут. При таком
+   раскладе тормоза. Я много чего перепробовал и решил воспользоваться
+   последним шансом, то есть сконфигурировать модули как бы друг на
+   друга. Для этого начало то же, Одно устройство "координатор АТ",
+   второе "маршрутизатор\конечный узел АТ" но теперь не надо задавать
+   имена, прописывать роуты и заниматься прочей фигней, надо просто в
+   каждом устройстве указать одну и ту же подсеть и "крест на крест"
+   дать им ссылки друг на друга, используя для этого верхний и нижний
+   серийные номера. Верхний у них один,а нижние различаются. То есть
+   как я понял при таком раскладе они смогут общаться только друг с
+   другом, но мне и не требуется сложных топологий, у меня всего два
+   устройства. При таком раскладе даже на "штатных" 9600 все летает, я
+   вероятно даже попробую понизить скорость, чтобы была более
+   устойчивая связь на расстояниях, объем данных у меня мизерный.
+
+
+
+** iRobot
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Развлекаемся_с_iRobot_Create.maff
+
+   Каждый модуль настраивается на передачу друг другу данных в сети
+   0x3330 на скорости 57600 бод. Один модуль подключается к
+   компьютеру, а другой ставится на робота. Модули взаимозаменяемы -
+   на робота можно поставить любой из них.
+   
+   +++
+   ATID3330,DH0,DL1,MY0,BD6,WR,CN
+
+   +++
+   ATID3330,DH0,DL0,MY1,BD6,WR,CN
+
+
+** работа с АЦП, настройка модулей
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Передача_данных_в_ZigBee-сети_с_помощью_модулей_XBee_ZNet_2.5.maff
+   
+** настройка
+   file:///home/store/documents/net-wireless/ZigBee/how-to/xbee-setup.pdf
+
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Antipasto_Hardware_Blog-_XBee_Shield_to_XBee_Shield_Communication.maff
+
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Common_XBee_Mistakes_«_Rob_Faludi.maff
+
+   file:///home/store/documents/net-wireless/ZigBee/how-to/Xbee_Series_2_Point_to_Point_Duplex_Configuration.maff
+
+
+** Vref
+   The XBee Vref depends on which XBee you have. The Series 2 XBee
+   hardware has a built in Vref set to 1.2V.
+
+   The Series 1 XBee hardware requires an extenal Vref applied to
+   pin 14. This is the Vrefh symbol in Table 1-04 and can be in the
+   range of 2.08V to Vcc (3.3V). The analog input voltage (ADC pin in)
+   is then scaled to this Vref.
+
+
+* string format
+Unix format Line feed LF ('\n', 0x0A)
+DOS format carriage_return + Line_feed CR+LF ('\r\n', 0x0D 0x0A)
+
+
+* bootloader menu command
+V - Bootloader version string
+
+* AT-command
+
++++ 
+
+
+** example 
+   ATDT 1F<CR>
+   | AT prefix | ASCII command | Space (optional) | Parameter (optional, HEX) | Carriage Return ('\r', 0x0D) |
+   |-----------+---------------+------------------+---------------------------+------------------------------|
+   | AT        | DT            |                  | 1F                        | <CR>                         |
+
+
+
+| command | parameter | description                                                                               |
+|---------+-----------+-------------------------------------------------------------------------------------------|
+| ATBD    |         3 | read/write serial port speed 0:1200 1:2400 2:4800 3:9600 4:19200 5:38400 6:57600 7:115200 |
+| ATID    |           | network identifier                                                                        |
+| ---ATMY |           | node identifier MY sets the 16bit address                                                 |
+| ATDH    |           | destination node identifier 64bit address                                                 |
+| ATDL    |           | destination node identifier 64bit address                                                 |
+|         |           |                                                                                           |
+| ATND    |           | обнаружить все узлы сети                                                                  |
+|         |           |                                                                                           |
+| ATCN    |           | leave command mode                                                                        |
+| ATWR    |           | write settings to firmware                                                                |
+
+
+

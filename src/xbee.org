@@ -1,0 +1,80 @@
+* connection to computer (FT232RL)
+
+| ftdi | lilypad - zigbee |
+|------+------------------|
+| gnd  | gnd              |
+| rx   | rx (not crossed) |
+| tx   | tx (not crossed) |
+| -    | 3.3 (external)   |
+
+
+Air, Earth - Xbee Series 2
+
+
+* simple echo AT-mode
+** earth configure
+   "Coordinator AT"
+   +++
+   
+   ATSH
+   >>>> 123456
+   
+   ATSL
+   >>>> ABCDEF12
+   
+   ATID 3
+   ATDH 0
+   ATDL 7
+   ATWR
+   ATCN
+   
+** air configure
+   "Router/end device AT"
+   +++
+   
+   ATSH
+   >>>> 123456
+   
+   ATSL
+   >>>> ABCDEF01
+   
+   ATID 7
+   ATDH 0
+   ATDL 3
+   ATWR
+   ATCN
+   
+   
+   At air need connect "rx" and "tx"
+   
+   
+   
+** earth test work
+   print "test" (without +++)
+
+
+
+
+* adc API-mode
+
+** earth configure
+   "Coordinator API"
+
+** air configure
+   "Router/end device AT"
+   
+   +++
+   ATD1 2 ;; enable ADC in pin D1
+   ;; ATIR 0
+   
+   
+   
+** air testing from PC
+   +++
+   ATIS
+   >>>> 01       ;; ? D0
+   >>>> 0000
+   >>>> 02       ;; ADC D1
+   >>>> 0312     ;; (/ (* #x0312 1.2) #x3FF)    ;; #x3FF ==1.2V    #x0312 readed
+
+
