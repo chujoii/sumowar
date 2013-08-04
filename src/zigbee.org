@@ -1,6 +1,6 @@
 * library
 
-** x-ctu wine
+ x-ctu wine
 file:///home/store/documents/net-wireless/ZigBee/x-ctu/Buck_Up_Chinny-_X-CTU_with_Linux.maff
 
 
@@ -40,6 +40,10 @@ file:///home/store/documents/net-wireless/ZigBee/schematic/Модуль_XBee_Pro
 
  main datasheet
 file:///home/store/documents/net-wireless/ZigBee/datasheet/XBee_ZB_-_Digi_International_2013-07-09.maff
+
+ api C
+file:///home/store/documents/net-wireless/ZigBee/pic/xbee_«_Circuits@Home.maff
+
 
 ** AT command
 file:///home/store/documents/net-wireless/ZigBee/datasheet/22AT%20Commands.pdf
