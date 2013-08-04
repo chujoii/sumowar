@@ -6,17 +6,7 @@
 
 
 
-// strange but lcd.print(12);	not work - after upload only led blinking 
-//             lcd.print(String(12)); not work - blinking
-// wokr lcd.print("12"); work
-//
-//	char buf[12]; // "-2147483648\0"
-//	itoa(7, buf, 10);
-//	lcd.print(buf);
-
-
 #include <XBee.h>
-//#include <SoftwareSerial.h>
 
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
@@ -29,14 +19,6 @@
 LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x20 for a 16 chars and 2 line display
 
 
-// Define SoftSerial TX/RX pins
-// Connect Arduino pin 8 to TX of usb-serial device
-//uint8_t ssRX = 8;
-// Connect Arduino pin 9 to RX of usb-serial device
-//uint8_t ssTX = 9;
-// Remember to connect all devices to a common Ground: XBee, Arduino and USB-Serial device
-//SoftwareSerial nss(ssRX, ssTX);
-
 
 
 
@@ -46,29 +28,32 @@ float ftest;
 
 char buf[9]; // menu_max_value_length
 
+int wait_limit_ms = 5000;
 
-// Turn on I/O sampling
-uint8_t irCmd[] = {'I','R'};
-// Set sample rate to 65 seconds (0xffff/1000)
-uint8_t irValue[] = { 0xff, 0xff };
-
-
-// Set DIO0 (pin 20) to Analog Input
-uint8_t d0Cmd[] = { 'D', '0' };
-uint8_t d0Value[] = { 0x2 };
+// Set D0 to Analog Input
+uint8_t set_ADC_ON_cmd[] = { 'D', '0' };
+uint8_t set_ADC_ON_val[] = { 0x02 };
 
 
-//ZBRxIoSampleResponse ioSample = ZBRxIoSampleResponse();
+// Read from Analog Input
+uint8_t get_ADC_cmd[] = { 'I', 'S' };
+uint8_t get_ADC_val[] = {  };
+
+// Set D4 to Digital ON                    // fixme need ATAC?
+uint8_t set_LED_ON_cmd[] = { 'D', '4' };
+uint8_t set_LED_ON_val[] = { 0x05 };
+
+// Set D4 to Digital OFF                   // fixme need ATAC?
+uint8_t set_LED_OFF_cmd[] = { 'D', '4' };
+uint8_t set_LED_OFF_val[] = { 0x04 };
 
 
 // SH + SL of your remote radio
 //XBeeAddress64 remoteAddress = XBeeAddress64(0x123456, 0xABCDEF01); // see addr.h
 
 
-
-
 // Create a remote AT request with the IR command
-RemoteAtCommandRequest remoteAtRequest = RemoteAtCommandRequest(remoteAddress, irCmd, irValue, sizeof(irValue));
+RemoteAtCommandRequest remoteAtRequest = RemoteAtCommandRequest(remoteAddress, set_ADC_ON_cmd, set_ADC_ON_val, sizeof(set_ADC_ON_val));
   
 // Create a Remote AT response object
 RemoteAtCommandResponse remoteAtResponse = RemoteAtCommandResponse();
@@ -107,103 +92,153 @@ void setup ()
 	xbee.setSerial(Serial);
 	xbee.setSerial(Serial);
 	
-	delay(5000); // delay for join network
+	countdown (15); // delay for join network
 	
 
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("start");
 
+
+
+
+
+
+
+
+	// fixme need check succes or not ADC=ON
+
+
+	remoteAtRequest.setCommand(set_ADC_ON_cmd);
+	remoteAtRequest.setCommandValue(set_ADC_ON_val);
+	remoteAtRequest.setCommandValueLength(sizeof(set_ADC_ON_val));
+	
+	sendRemoteAtCommand();
+	
+	// it's a good idea to clear the set value so that the object can be reused for a query
+	remoteAtRequest.clearCommandValue();
+
+	delay(5000);
+	
 }
 
 
 
 void loop ()
 {
+
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("LED on");
 	
-	sendRemoteAtCommand();
+	delay(1000);
 	
-	// now reuse same object for DIO0 command
-	remoteAtRequest.setCommand(d0Cmd);
-	remoteAtRequest.setCommandValue(d0Value);
-	remoteAtRequest.setCommandValueLength(sizeof(d0Value));
+	remoteAtRequest.setCommand(set_LED_ON_cmd);
+	remoteAtRequest.setCommandValue(set_LED_ON_val);
+	remoteAtRequest.setCommandValueLength(sizeof(set_LED_ON_val));
 	
 	sendRemoteAtCommand();
 	
 	// it's a good idea to clear the set value so that the object can be reused for a query
 	remoteAtRequest.clearCommandValue();
+
+	delay(5000);
+
+
+
+
+
+
+
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("ADC");
 	
+	delay(1000);
+
+	remoteAtRequest.setCommand(get_ADC_cmd);
+	remoteAtRequest.setCommandValue(get_ADC_val);
+	remoteAtRequest.setCommandValueLength(sizeof(get_ADC_val));
 	
+	sendRemoteAtCommand();
 	
-/*
+	// it's a good idea to clear the set value so that the object can be reused for a query
+	remoteAtRequest.clearCommandValue();
+
+	delay(5000);
+
+
 	
-	//attempt to read a packet    
-	xbee.readPacket();
+
+
+
 	
-	if (xbee.getResponse().isAvailable()) {
-		// got something
-		
-		if (xbee.getResponse().getApiId() == ZB_IO_SAMPLE_RESPONSE) {
-			xbee.getResponse().getZBRxIoSampleResponse(ioSample);
-			
-			lcd.print("Received I/O Sample from: ");
-			
-			lcd.print(ioSample.getRemoteAddress64().getMsb(), HEX);  
-			lcd.print(ioSample.getRemoteAddress64().getLsb(), HEX);  
-			lcd.println("");
-			
-			if (ioSample.containsAnalog()) {
-				lcd.println("Sample contains analog data");
-			}
-			
-			if (ioSample.containsDigital()) {
-				lcd.println("Sample contains digtal data");
-			}      
-			
-			// read analog inputs
-			for (int i = 0; i <= 4; i++) {
-				if (ioSample.isAnalogEnabled(i)) {
-					lcd.print("Analog (AI");
-					lcd.print(i, DEC);
-					lcd.print(") is ");
-					lcd.println(ioSample.getAnalog(i), DEC);
-				}
-			}
-			
-			// check digital inputs
-			for (int i = 0; i <= 12; i++) {
-				if (ioSample.isDigitalEnabled(i)) {
-					lcd.print("Digital (DI");
-					lcd.print(i, DEC);
-					lcd.print(") is ");
-					lcd.println(ioSample.isDigitalOn(i), DEC);
-				}
-			}
-			
-			// method for printing the entire frame data
-			//for (int i = 0; i < xbee.getResponse().getFrameDataLength(); i++) {
-			//  lcd.print("byte [");
-			//  lcd.print(i, DEC);
-			//  lcd.print("] is ");
-			//  lcd.println(xbee.getResponse().getFrameData()[i], HEX);
-			//}
-		} 
-		else {
-			lcd.print("Expected I/O Sample, but got ");
-			lcd.print(xbee.getResponse().getApiId(), HEX);
-		}    
-	} else if (xbee.getResponse().isError()) {
-		lcd.print("Error reading packet.  Error code: ");  
-		lcd.println(xbee.getResponse().getErrorCode());
-	}
 
 
 
-*/
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("LED off");
+	
+	delay(1000);
+	
+	remoteAtRequest.setCommand(set_LED_OFF_cmd);
+	remoteAtRequest.setCommandValue(set_LED_OFF_val);
+	remoteAtRequest.setCommandValueLength(sizeof(set_LED_OFF_val));
+	
+	sendRemoteAtCommand();
+	
+	// it's a good idea to clear the set value so that the object can be reused for a query
+	remoteAtRequest.clearCommandValue();
+
+	delay(5000);
 
 
-  delay(1000);
 
+
+
+
+
+	lcd.clear();
+	lcd.setCursor(0,0);
+	lcd.print("ADC");
+	
+	delay(1000);
+
+	remoteAtRequest.setCommand(get_ADC_cmd);
+	remoteAtRequest.setCommandValue(get_ADC_val);
+	remoteAtRequest.setCommandValueLength(sizeof(get_ADC_val));
+	
+	sendRemoteAtCommand();
+	
+	// it's a good idea to clear the set value so that the object can be reused for a query
+	remoteAtRequest.clearCommandValue();
+
+	delay(5000);
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+void countdown (int start_seconds)
+{
+	int counter;
+	for (int counter = start_seconds; counter > 0 ; counter--) {
+			lcd.clear();
+			lcd.setCursor(0,0);
+			lcd.print(counter);
+			delay (1000);
+	}	
 }
 
 
@@ -211,13 +246,13 @@ void loop ()
 void sendRemoteAtCommand() {
 	lcd.clear();
 	lcd.setCursor(0,0);
-	lcd.println("Sending command to the XBee");
+	lcd.print("Sending command");
 	
 	// send the command
 	xbee.send(remoteAtRequest);
 	
 	// wait up to 5 seconds for the status response
-	if (xbee.readPacket(5000)) {
+	if (xbee.readPacket(wait_limit_ms)) {
 		// got a response!
 		
 		// should be an AT command response
@@ -228,47 +263,62 @@ void sendRemoteAtCommand() {
 				lcd.clear();
 				lcd.setCursor(0,0);
 				lcd.print("Command [");
+				
 				lcd.print(remoteAtResponse.getCommand()[0]);
+				lcd.setCursor(0,1);
 				lcd.print(remoteAtResponse.getCommand()[1]);
-				lcd.println("] was successful!");
+				lcd.print("] was successful!");
 				
 				if (remoteAtResponse.getValueLength() > 0) {
 					lcd.clear();
 					lcd.setCursor(0,0);
 					lcd.print("Command value length is ");
-					lcd.println(remoteAtResponse.getValueLength(), DEC);
+					lcd.print(remoteAtResponse.getValueLength(), DEC);
 					
 					lcd.clear();
 					lcd.setCursor(0,0);
-					lcd.print("Command value: ");
-					
+					lcd.print("value: (n=");
+					lcd.print(remoteAtResponse.getValueLength());					
+					lcd.print(")");
+					lcd.setCursor(0,1);
 					for (int i = 0; i < remoteAtResponse.getValueLength(); i++) {
 						lcd.print(remoteAtResponse.getValue()[i], HEX);
 						lcd.print(" ");
 					}
 					
-					lcd.println("");
+					lcd.print("");
 				}
 			} else {
 				lcd.clear();
 				lcd.setCursor(0,0);
-				lcd.print("Command returned error code: ");
-				lcd.println(remoteAtResponse.getStatus(), HEX);
+				lcd.print("Cmd ret err code:");
+				lcd.setCursor(0,1);
+				lcd.print(remoteAtResponse.getStatus(), HEX);
 			}
 		} else {
 			lcd.clear();
 			lcd.setCursor(0,0);
 			lcd.print("Expected Remote AT response but got ");
+			lcd.setCursor(0,1);
 			lcd.print(xbee.getResponse().getApiId(), HEX);
 		}    
 	} else if (xbee.getResponse().isError()) {
 		lcd.clear();
 		lcd.setCursor(0,0);
-		lcd.print("Error reading packet.  Error code: ");  
-		lcd.println(xbee.getResponse().getErrorCode());
+		lcd.print("Error reading packet:");  
+		lcd.setCursor(0,1);
+		lcd.print(xbee.getResponse().getErrorCode());
 	} else {
 		lcd.clear();
 		lcd.setCursor(0,0);
 		lcd.print("No response from radio");  
 	}
 }
+
+
+
+
+
+
+
+
