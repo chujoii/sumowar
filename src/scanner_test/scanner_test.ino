@@ -21,6 +21,10 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x20 for a 16 chars
 
 
 
+int delay_us_between_led_on_and_scan = 1;
+
+
+
 
 XBee xbee = XBee();
 
@@ -127,126 +131,71 @@ void setup ()
 
 
 
-void loop ()
+
+
+int black_white_sensor_read_gray ()
 {
+	int light_current;
+	int dark_current;
 	int result;
 
-	lcd.clear();
-	lcd.setCursor(0,0);
-	lcd.print("LED on");
-	
-	//delay(1000);
-	
-
+	//LED on
 	result = set_DIO('4', 0x05);
-	/*
-	if (result>=0){
-		lcd.setCursor(0,1);
-		lcd.print("ok");
-	} else {
-		lcd.setCursor(0,1);
-		lcd.print("error: 0x");
-		lcd.print(result, HEX);
-	}
-	*/
-
-	//delay(5000);
-
-
-
-
-
-
-
-	//lcd.clear();
-	//lcd.setCursor(0,0);
-	//lcd.print("ADC");
 	
-	//delay(1000);
-
+	if (result<0){
+		return result;
+	}
+	
+	// ADC
 	result = get_ADC(0x00);
-	if (result>=0){
-		lcd.setCursor(0,1);
-		lcd.print("0x");
-		lcd.print(result, HEX);
-
-		lcd.print(" = ");
-		lcd.print((result * 1.2) / 0x3FF);
-		lcd.print("V");
+	if (result<0){
+		return result;
 	} else {
-		lcd.setCursor(0,1);
-		lcd.print("error: 0x");
-		lcd.print(result, HEX);
+		light_current = result; // ((result * 1.2) / 0x3FF);
 	}
 
-	delay(100);
 
 
-	
-
-
-
-	
+	delayMicroseconds(delay_us_between_led_on_and_scan);
 
 
 
-
-
-
-
-
-	lcd.clear();
-	lcd.setCursor(0,0);
-	lcd.print("LED off");
-	
-	//delay(1000);
-	
-
+	// LED off
 	result = set_DIO('4', 0x04);
-	/*
-	if (result>=0){
-		lcd.setCursor(0,1);
-		lcd.print("ok");
-	} else {
-		lcd.setCursor(0,1);
-		lcd.print("error: 0x");
-		lcd.print(result, HEX);
+	if (result<0){
+		return result;
 	}
-	*/
-
-	//delay(5000);
-
-
-
-
-
-
-
-	//lcd.clear();
-	//lcd.setCursor(0,0);
-	//lcd.print("ADC");
 	
-	//delay(1000);
-
+	// ADC
 	result = get_ADC(0x00);
-	if (result>=0){
-		lcd.setCursor(0,1);
-		lcd.print("0x");
-		lcd.print(result, HEX);
-
-		lcd.print(" = ");
-		lcd.print((result * 1.2) / 0x3FF);
-		lcd.print("V");
-
+	if (result<0){
+		return result;
 	} else {
-		lcd.setCursor(0,1);
-		lcd.print("error: 0x");
-		lcd.print(result, HEX);
+		dark_current = result; // ((result * 1.2) / 0x3FF);
 	}
 
-	delay(100);
 
 
+	return abs(light_current - dark_current);
+}
+
+
+void loop ()
+{
+
+	int light_sensor = black_white_sensor_read_gray();
+
+	if (light_sensor>=0){
+		lcd.clear();
+		lcd.setCursor(0,0);
+		lcd.print(((light_sensor * 1.2) / 0x3FF));
+	} else {
+		lcd.setCursor(0,0);
+		lcd.print("error: 0x");
+		lcd.print(light_sensor, HEX);
+	}
+	
+	delay (100);
 }
 
 
