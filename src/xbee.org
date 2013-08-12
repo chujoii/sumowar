@@ -2,7 +2,7 @@ xbee.org --- how to use Xbee radio module; setup to rotation scanner
 
 
 
-Copyright (C) 2012 Roman V. Prikhodchenko
+Copyright (C) 2013 Roman V. Prikhodchenko
 
 
 
@@ -65,7 +65,7 @@ Air, Earth - Xbee Series 2
 | ATDH    |           | destination node identifier 64bit address                                                 |
 | ATDL    |           | destination node identifier 64bit address                                                 |
 |         |           |                                                                                           |
-| ATND    |           | обнаружить все узлы сети                                                                  |
+| ATND    |           | detect all nodes in network (обнаружить все узлы сети)                                    |
 |         |           |                                                                                           |
 | ATCN    |           | leave command mode                                                                        |
 | ATWR    |           | write settings to firmware                                                                |
@@ -141,44 +141,10 @@ Air, Earth - Xbee Series 2
    
    
 ** air testing from PC
-   +++
-   ATD4 4        ;; off LED
-   ATAC          ;; or ATCN apply port state
-
-   ATIS          ;; read from photodiode dark current
-   >>>> 01       ;; 1 byte ;; number of samples (in packet)
-   >>>> 0000     ;; 2 byte ;; (Digital channel mask of) all digital pins reported on as list
-   >>>> 01       ;; 1 byte ;; ADC D0 (analog channel mask of) all analog pins reported on as list 
-   >>>> 0312     ;; 2 byte ;; (/ (* #x0312 1.2) #x3FF)    ;; #x3FF ==1.2V    #x0312 readed
-
-   ATD4 5        ;; on LED
-   ATAC          ;; or ATCN apply port state
-   
-   ATIS          ;; read from photodiode dark current
-   >>>> 01       ;; 1 byte ;; number of samples (in packet)
-   >>>> 0000     ;; 2 byte ;; (Digital channel mask of) all digital pins reported on as list
-   >>>> 01       ;; 1 byte ;; ADC D0 (analog channel mask of) all analog pins reported on as list 
-   >>>> 0312     ;; 2 byte ;; (/ (* #x0312 1.2) #x3FF)    ;; #x3FF ==1.2V    #x0312 readed
-   
-   ATD4 4        ;; off LED
-   ATAC          ;; or ATCN apply port state
-
-
 
    | command | description                                                                   |
    |---------+-------------------------------------------------------------------------------|
    | +++     | start                                                                         |
-   |         |                                                                               |
-   | ATD4 4  | LED "off"                                                                     |
-   |         |                                                                               |
-   | ATAC    | apply port state                                                              |
-   |         |                                                                               |
-   | ATIS    | read from photodiode dark current from ADC                                    |
-   | > 01    | 1 byte ;; number of samples (in packet)                                       |
-   | > 0010  | 2 byte ;; (Digital channel mask of) all digital pins reported on as list      |
-   | > 01    | 1 byte ;; ADC D0 (analog channel mask of) all analog pins reported on as list |
-   | > 0000  | 2 byte ;; DO pin is off                                                       |
-   | > 00CC  | 2 byte ;; #x3FF == 1.2V   #x00CC readed => (/ (* #x00CC 1.2) #x3FF) = 0.24 V  |
    |         |                                                                               |
    | ATD4 5  | LED "on"                                                                      |
    |         |                                                                               |
@@ -194,5 +160,17 @@ Air, Earth - Xbee Series 2
    | ATD4 4  | LED "off"                                                                     |
    |         |                                                                               |
    | ATAC    | apply port state                                                              |
+   |         |                                                                               |
+   | ATIS    | read from photodiode dark current from ADC                                    |
+   | > 01    | 1 byte ;; number of samples (in packet)                                       |
+   | > 0010  | 2 byte ;; (Digital channel mask of) all digital pins reported on as list      |
+   | > 01    | 1 byte ;; ADC D0 (analog channel mask of) all analog pins reported on as list |
+   | > 0000  | 2 byte ;; DO pin is off                                                       |
+   | > 00CC  | 2 byte ;; #x3FF == 1.2V   #x00CC readed => (/ (* #x00CC 1.2) #x3FF) = 0.24 V  |
+   |         |                                                                               |
 
+
+
+** ultrasonic
+   need use "Change Detection Sampling"
 
