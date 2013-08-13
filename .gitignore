@@ -1,6 +1,6 @@
 .*
 ~*
 !.gitignore
-!.example
+!*.example
 
 src/scanner_test/addr.h

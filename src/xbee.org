@@ -171,6 +171,15 @@ Air, Earth - Xbee Series 2
 
 
 
-** ultrasonic
-   need use "Change Detection Sampling"
+* ultrasonic
+  need use "Change Detection Sampling"
 
+
+  | command | parameter | description                                                                                                                             |
+  |---------+-----------+-----------------------------------------------------------------------------------------------------------------------------------------|
+  | IR + IT |           | for sample rate                                                                                                                         |
+  | IC      |           | to enable change detection on the input lines                                                                                           |
+  | IA      |           | parameter controls permissions for other modules to order this module to change the states of its output lines.                         |
+  | Tn + Dn |           | parameter (n in 0–7) sets timeout values for output lines whose values are set through I/O line passing (not through the IO parameter). |
+  | PT      |           | parameter is a common timeout value for both analog outputs. (PWM)                                                                      |
+  | IU      |           | parameter controls what happens to line state packets.                                                                                  |
