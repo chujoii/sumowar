@@ -109,3 +109,33 @@ N=F*V=46,45*0,15= 6,97 Вт
 
 
 Universal Mounting Hub 3mm OR 5mm?
+
+* calculation
+from http://www.robotshop.com/ca/learning-center/dynamic-tools.html
+ 
+  | INPUT                   |          |
+  |-------------------------+----------|
+  | Total mass of robot:    | 3 kg     |
+  | Number of drive motors: | 4 [#]    |
+  | Radius of drive wheel:  | 0.015 M  |
+  | Velocity of robot:      | 2 m/s    |
+  | Maximum incline:        | 30 [deg] |
+  | Supply voltage:         | 12 [V]   |
+  | Desired acceleration:   | 0.2 m/s2 |
+  | Desired operating time: | 15 min   |
+  | Total efficiency:       | 65 [%]   |
+
+  | OUTPUT  (per drive motor) |                                             |
+  |---------------------------+---------------------------------------------|
+  | Angular Velocity          | 133.33 rad/s                                |
+  | Torque*                   | 0.088356  Nm, 0.90067 kgf-cm, 12.511 ozf-in |
+  | Total Power               | 11.781 W                                    |
+  | Maximum current           | 0.98173 [A]                                 |
+  | Battery Pack              | 0.98173 [AH]                                |
+
+  | DC/V | RPM/min | torque kg.cm | Reduction ratio(1:00) |
+  |------+---------+--------------+-----------------------|
+  | 12V  |     300 |          0.6 |                   100 |
+  | 12V  |     200 |            1 |                   150 |
+  | 12V  |     100 |            2 |                   298 |
+  |      |         |              |                       |
