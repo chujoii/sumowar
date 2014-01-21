@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="c.svg">
+   sodipodi:docname="obstacle.svg">
   <defs
      id="defs4">
     <marker
@@ -356,7 +356,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1"
      inkscape:cx="375.5"
-     inkscape:cy="990.06978"
+     inkscape:cy="981.06978"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -374,7 +374,34 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Roman V. Prikhodchenko (chujoii@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Roman V. Prikhodchenko (chujoii@gmail.com)</dc:title>
+          </cc:Agent>
+        </dc:rights>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <g
@@ -573,7 +600,7 @@
          id="g8319"
          transform="translate(-8,0)">
         <path
-           d="m 148,215.86218 a 30.5,30.5 0 1 1 -61,0 30.5,30.5 0 1 1 61,0 z"
+           d="m 148,215.86218 c 0,16.84469 -13.65532,30.5 -30.5,30.5 -16.84468,0 -30.5,-13.65531 -30.5,-30.5 0,-16.84468 13.65532,-30.5 30.5,-30.5 16.84468,0 30.5,13.65532 30.5,30.5 z"
            sodipodi:ry="30.5"
            sodipodi:rx="30.5"
            sodipodi:cy="215.86218"
@@ -590,7 +617,7 @@
            sodipodi:cy="215.86218"
            sodipodi:rx="30.5"
            sodipodi:ry="30.5"
-           d="m 148,215.86218 a 30.5,30.5 0 1 1 -61,0 30.5,30.5 0 1 1 61,0 z" />
+           d="m 148,215.86218 c 0,16.84469 -13.65532,30.5 -30.5,30.5 -16.84468,0 -30.5,-13.65531 -30.5,-30.5 0,-16.84468 13.65532,-30.5 30.5,-30.5 16.84468,0 30.5,13.65532 30.5,30.5 z" />
       </g>
       <rect
          style="fill:#ffb13b;fill-opacity:1;fill-rule:nonzero;stroke:#ff9015;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
