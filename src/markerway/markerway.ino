@@ -117,6 +117,25 @@ int sign(int x){
 	if (x>=0) {return 1;} else {return -1;}
 }
 
+int remainder(int a, int b)
+{
+	// exist -330%180 = -150
+	// want  -330%180 = 30
+	
+	return (b+(a%b))%b;
+}
+
+boolean xorr(boolean a, boolean b)
+{
+	return ((!a) && b) || (a && (!b));
+}
+
+boolean check_odd_turn(int angle, int oneturn)
+{
+	//return abs(x/2);
+	return xorr((angle/oneturn)%2 == 0, angle>0);
+}
+
 int set_wheels (int xt, int yt, int desirable_angular_velocity) 
 {
 	/*
@@ -155,40 +174,17 @@ int set_wheels (int xt, int yt, int desirable_angular_velocity)
 		r[n] = sqrt((x[n]*x[n]) + (y[n]*y[n]));
 
 
-		angle[n] = int(atan(y[n]/x[n])*(180.0/3.1415926)) % 360;   //   *(180/3.14) convert rad->gradus    %360 === constrain(angel, -360, 360)
+		angle[n] = int(atan(y[n]/x[n])*(180.0/3.1415926));   //   *(180/3.14) convert rad->gradus
 		
-
-		
-		
-
 		// See drawings/motion.svg
-		if ((-360 <= angle[n]) && (angle[n] < -180)) { // forward wheel rotation
-			angle[n] = angle[n] + 360;
+		angle[n] = remainder(angle[n], 180);
+		if (check_odd_turn(i,180)) {
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_a]);          // 1 power
 			wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_b])); // 0 gnd
-		} else {
-			if ((-180 <= angle[n]) && (angle[n] < 0)) { // reverse wheel rotation
-				angle[n] = angle[n] + 180;
-				wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_a])); // 0 gnd
-				wheel_state = wheel_state | byte(wheel[n][wheel_collector_b]);          // 1 power
-			} else {
-				if ((0 <= angle[n]) && (angle[n] <= 180)) { // forward wheel rotation
-					//angle[n] = angle[n];
-					wheel_state = wheel_state | byte(wheel[n][wheel_collector_a]);          // 1 power
-					wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_b])); // 0 gnd
-				} else {
-					if ((180 <= angle[n]) && (angle[n] < 360)) { //reverse wheel rotation
-						angle[n] = angle[n] -180;
-						wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_a])); // 0 gnd
-						wheel_state = wheel_state | byte(wheel[n][wheel_collector_b]);          // 1 power
-					} else {
-						// error
-					}
-				}
-			}
+		}else{
+			wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_a])); // 0 gnd
+			wheel_state = wheel_state | byte(wheel[n][wheel_collector_b]);          // 1 power
 		}
-
-
 		servo_wheel[n].write(angle[n]);
 	}
 

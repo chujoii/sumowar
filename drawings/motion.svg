@@ -23,7 +23,7 @@
        effect="skeletal"
        id="path-effect11642"
        is_visible="true"
-       pattern="M 0,0 0,10 10,5 z"
+       pattern="m 20,0 0,3.75409 -20,0 0,2.48496 20,0 L 20,10 30,5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -158,7 +158,7 @@
        effect="skeletal"
        id="path-effect11329"
        is_visible="true"
-       pattern="M 0,0 0,10 10,5 z"
+       pattern="m 510.09776,543.70885 0,3.75409 -20,0 0,2.48496 20,0 0,3.76095 10,-5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -167,7 +167,8 @@
        tang_offset="0"
        prop_units="false"
        vertical_pattern="false"
-       fuse_tolerance="0" />
+       fuse_tolerance="0"
+       pattern-nodetypes="cccccccc" />
     <inkscape:path-effect
        effect="spiro"
        id="path-effect11327"
@@ -1802,11 +1803,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0115708"
-     inkscape:cx="200.81448"
-     inkscape:cy="269.84235"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="401.68592"
+     inkscape:cy="258.13302"
      inkscape:document-units="px"
-     inkscape:current-layer="g11269"
+     inkscape:current-layer="g11531"
      showgrid="false"
      inkscape:window-width="1268"
      inkscape:window-height="751"
@@ -1823,7 +1824,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <dc:creator>
           <cc:Agent>
             <dc:title>Roman V. Prikhodchenko (chujoii@gmail.com)</dc:title>
@@ -1964,9 +1965,9 @@
            sodipodi:cy="-83.637817"
            sodipodi:rx="8"
            sodipodi:ry="8"
-           d="m 94,-83.637817 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z" />
+           d="m 94,-83.637817 c 0,4.418278 -3.581722,8 -8,8 -4.418278,0 -8,-3.581722 -8,-8 0,-4.418278 3.581722,-8 8,-8 4.418278,0 8,3.581722 8,8 z" />
         <path
-           d="m 94,-83.637817 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
+           d="m 94,-83.637817 c 0,4.418278 -3.581722,8 -8,8 -4.418278,0 -8,-3.581722 -8,-8 0,-4.418278 3.581722,-8 8,-8 4.418278,0 8,3.581722 8,8 z"
            sodipodi:ry="8"
            sodipodi:rx="8"
            sodipodi:cy="-83.637817"
@@ -1984,9 +1985,9 @@
            sodipodi:cy="-83.637817"
            sodipodi:rx="8"
            sodipodi:ry="8"
-           d="m 94,-83.637817 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z" />
+           d="m 94,-83.637817 c 0,4.418278 -3.581722,8 -8,8 -4.418278,0 -8,-3.581722 -8,-8 0,-4.418278 3.581722,-8 8,-8 4.418278,0 8,3.581722 8,8 z" />
         <path
-           d="m 94,-83.637817 a 8,8 0 1 1 -16,0 8,8 0 1 1 16,0 z"
+           d="m 94,-83.637817 c 0,4.418278 -3.581722,8 -8,8 -4.418278,0 -8,-3.581722 -8,-8 0,-4.418278 3.581722,-8 8,-8 4.418278,0 8,3.581722 8,8 z"
            sodipodi:ry="8"
            sodipodi:rx="8"
            sodipodi:cy="-83.637817"
@@ -1998,7 +1999,7 @@
         <path
            sodipodi:end="6.2831853"
            sodipodi:start="3.1415927"
-           d="m 78,-83.637818 a 8,8 0 0 1 16,10e-7 l -8,0 z"
+           d="m 78,-83.637818 c 0,-4.418278 3.581722,-8 8,-7.999999 4.418278,0 8,3.581722 8,8 l -8,0 z"
            sodipodi:ry="8"
            sodipodi:rx="8"
            sodipodi:cy="-83.637817"
@@ -2018,11 +2019,11 @@
            sodipodi:cy="-83.637817"
            sodipodi:rx="8"
            sodipodi:ry="8"
-           d="m 78,-83.637818 a 8,8 0 0 1 16,10e-7 l -8,0 z" />
+           d="m 78,-83.637818 c 0,-4.418278 3.581722,-8 8,-7.999999 4.418278,0 8,3.581722 8,8 l -8,0 z" />
         <path
            sodipodi:end="6.2831853"
            sodipodi:start="3.1415927"
-           d="m 78,-83.637818 a 8,8 0 0 1 16,10e-7 l -8,0 z"
+           d="m 78,-83.637818 c 0,-4.418278 3.581722,-8 8,-7.999999 4.418278,0 8,3.581722 8,8 l -8,0 z"
            sodipodi:ry="8"
            sodipodi:rx="8"
            sodipodi:cy="-83.637817"
@@ -2042,7 +2043,7 @@
            sodipodi:cy="-83.637817"
            sodipodi:rx="8"
            sodipodi:ry="8"
-           d="m 78,-83.637818 a 8,8 0 0 1 16,10e-7 l -8,0 z" />
+           d="m 78,-83.637818 c 0,-4.418278 3.581722,-8 8,-7.999999 4.418278,0 8,3.581722 8,8 l -8,0 z" />
       </g>
       <use
          height="1052.3622"
@@ -2079,7 +2080,7 @@
          sodipodi:cy="207.86218"
          sodipodi:rx="11.5"
          sodipodi:ry="11.5"
-         d="m 427,207.86218 a 11.5,11.5 0 1 1 -23,0 11.5,11.5 0 1 1 23,0 z"
+         d="m 427,207.86218 c 0,6.35128 -5.14873,11.5 -11.5,11.5 -6.35127,0 -11.5,-5.14872 -11.5,-11.5 0,-6.35127 5.14873,-11.5 11.5,-11.5 6.35127,0 11.5,5.14873 11.5,11.5 z"
          transform="matrix(0.39130435,0,0,0.39130435,6.4130426,862.02481)" />
       <text
          xml:space="preserve"
@@ -2120,7 +2121,7 @@
          sodipodi:cy="-90.137817"
          sodipodi:rx="31.5"
          sodipodi:ry="31.5"
-         d="m 393,-90.137817 a 31.5,31.5 0 1 1 -63,0 31.5,31.5 0 1 1 63,0 z"
+         d="m 393,-90.137817 c 0,17.396969 -14.10303,31.5 -31.5,31.5 -17.39697,0 -31.5,-14.103031 -31.5,-31.5 0,-17.396973 14.10303,-31.500003 31.5,-31.500003 17.39697,0 31.5,14.10303 31.5,31.500003 z"
          transform="translate(-192.5,1033.5)" />
       <path
          sodipodi:type="arc"
@@ -2130,7 +2131,7 @@
          sodipodi:cy="-90.137817"
          sodipodi:rx="31.5"
          sodipodi:ry="31.5"
-         d="m 393,-90.137817 a 31.5,31.5 0 1 1 -63,0 31.5,31.5 0 1 1 63,0 z"
+         d="m 393,-90.137817 c 0,17.396969 -14.10303,31.5 -31.5,31.5 -17.39697,0 -31.5,-14.103031 -31.5,-31.5 0,-17.396973 14.10303,-31.500003 31.5,-31.500003 17.39697,0 31.5,14.10303 31.5,31.500003 z"
          transform="translate(-192.5,1033.5)" />
       <path
          sodipodi:type="arc"
@@ -2140,7 +2141,7 @@
          sodipodi:cy="-90.137817"
          sodipodi:rx="31.5"
          sodipodi:ry="31.5"
-         d="m 393,-90.137817 a 31.5,31.5 0 1 1 -63,0 31.5,31.5 0 1 1 63,0 z"
+         d="m 393,-90.137817 c 0,17.396969 -14.10303,31.5 -31.5,31.5 -17.39697,0 -31.5,-14.103031 -31.5,-31.5 0,-17.396973 14.10303,-31.500003 31.5,-31.500003 17.39697,0 31.5,14.10303 31.5,31.500003 z"
          transform="translate(-192.5,1033.5)" />
       <path
          sodipodi:type="arc"
@@ -2150,7 +2151,7 @@
          sodipodi:cy="-90.137817"
          sodipodi:rx="31.5"
          sodipodi:ry="31.5"
-         d="m 393,-90.137817 a 31.5,31.5 0 1 1 -63,0 31.5,31.5 0 1 1 63,0 z"
+         d="m 393,-90.137817 c 0,17.396969 -14.10303,31.5 -31.5,31.5 -17.39697,0 -31.5,-14.103031 -31.5,-31.5 0,-17.396973 14.10303,-31.500003 31.5,-31.500003 17.39697,0 31.5,14.10303 31.5,31.500003 z"
          transform="translate(-192.5,1033.5)" />
       <path
          inkscape:connector-curvature="0"
@@ -2190,7 +2191,7 @@
        style="fill:#ff9015;fill-opacity:1;stroke:none" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="M 196.95653,50.992273 324.29594,61.731494"
+       d="m 196.95653,50.572343 127.38658,11.09135"
        id="path9871"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2200,7 +2201,7 @@
        inkscape:connection-end-point="d4" />
     <g
        id="g9856"
-       transform="translate(123.05866,340.05866)">
+       transform="translate(123.05866,333.13873)">
       <rect
          transform="scale(1,-1)"
          ry="3.0000005"
@@ -2229,7 +2230,7 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="M 503.95653,20.992273 351,56.36218"
+       d="M 529.73653,32.377382 351,56.36218"
        id="path10581"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2237,7 +2238,7 @@
        inkscape:connection-start-point="d4"
        sodipodi:nodetypes="cc" />
     <g
-       transform="translate(430.05866,310.05866)"
+       transform="translate(430.05866,312.03578)"
        id="g10539">
       <rect
          style="fill:#fefbf1;fill-opacity:1;fill-rule:nonzero;stroke:#e9ebaa;stroke-width:3.00000024;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
@@ -2266,8 +2267,8 @@
            id="tspan11267">в данный момент около 90</tspan></text>
     </g>
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 524.72603,114.99227 371.18314,89.442806"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 522.7489,122.90077 371.20869,89.586113"
        id="path11041"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -2277,7 +2278,7 @@
        inkscape:connection-end-point="d4" />
     <g
        id="g10547"
-       transform="translate(303.05866,63.05866)">
+       transform="translate(301.08153,70.967153)">
       <rect
          transform="scale(1,-1)"
          ry="3.0000002"
@@ -2437,7 +2438,7 @@
          height="1052.3622" />
       <path
          transform="matrix(0.39130435,0,0,0.39130435,126.41304,822.02481)"
-         d="m 427,207.86218 a 11.5,11.5 0 1 1 -23,0 11.5,11.5 0 1 1 23,0 z"
+         d="m 427,207.86218 c 0,6.35128 -5.14873,11.5 -11.5,11.5 -6.35127,0 -11.5,-5.14872 -11.5,-11.5 0,-6.35127 5.14873,-11.5 11.5,-11.5 6.35127,0 11.5,5.14873 11.5,11.5 z"
          sodipodi:ry="11.5"
          sodipodi:rx="11.5"
          sodipodi:cy="207.86218"
@@ -2560,12 +2561,22 @@
          sodipodi:type="arc" />
       <path
          style="fill:#664444;fill-rule:evenodd;stroke:none;fill-opacity:1"
-         d="m 624.06633,259.37397 9.31766,-3.63058 c -2.35755,-5.08198 -2.6641,-11.42615 -0.65183,-16.94478 1.98999,-5.52817 6.39842,-10.44771 11.95341,-13.08154 0,0 0,0 0,0 4.11007,-1.95834 8.90583,-2.73401 13.56398,-2.11927 4.65888,0.61078 9.23411,2.62336 12.92128,5.7658 3.68901,3.14049 6.5124,7.43389 7.94179,12.21549 1.4307,4.78128 1.46825,10.05996 0.0292,14.99102 1.90877,-4.76895 2.43506,-10.16241 1.41847,-15.34653 -1.0179,-5.1838 -3.57117,-10.12213 -7.3424,-14.02743 -3.77308,-3.90335 -8.72151,-6.73157 -14.1515,-7.99509 0,0 0,0 0,0 -5.43073,-1.25956 -11.26178,-0.93797 -16.64476,0.99991 -10e-6,0 -10e-6,0 -10e-6,0 -7.30072,2.64253 -13.54137,8.20904 -17.02543,15.45365 -3.46178,7.25416 -4.01749,15.85315 -1.32984,23.71935 z"
+         d="m 672.29399,221.90433 -2.18112,3.05524 c -3.337,-2.3827 -7.19073,-4.0343 -11.22734,-4.78509 -5.28497,-0.9807 -10.83192,-0.40795 -15.805,1.63193 0,0 0,0 0,0 -6.73925,2.77008 -12.28783,8.23371 -15.16154,14.92942 -2.86675,6.69869 -2.99657,14.48465 -0.35473,21.27519 l 2.31541,-0.90219 c -2.40402,-6.15938 -2.28465,-13.31832 0.32336,-19.39413 2.6011,-6.07878 7.70284,-11.10241 13.82102,-13.60942 0,0 0,0 0,0 4.52121,-1.85684 9.60236,-2.38149 14.40759,-1.48764 3.67079,0.68108 7.19457,2.19242 10.23748,4.3643 l -2.18511,3.06082 c 0.9054,0.42956 1.78934,0.9259 2.63977,1.4883 10e-6,0 10e-6,0 10e-6,0 3.60679,2.37568 6.7003,6.02414 8.54119,10.40354 0,0 0,0 0,0 1.8448,4.37844 2.4462,9.54234 1.47682,14.63551 2.37847,-4.60684 3.4686,-10.11508 2.86611,-15.70204 -0.6064,-5.586 -2.88955,-11.16927 -6.743,-15.83937 0,0 0,0 0,-10e-6 -0.9113,-1.10146 -1.90417,-2.14602 -2.97092,-3.12436 z"
          id="path11638"
          inkscape:path-effect="#path-effect11640;#path-effect11642"
          inkscape:original-d="m 628.72516,257.55868 c 0,0 -27.67972,-53.38233 14.82843,-34.59966 42.50814,18.78267 35.58821,33.61109 35.58821,33.61109"
          inkscape:connector-curvature="0"
          transform="translate(-369.06219,654.70992)" />
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+         x="317"
+         y="781.36218"
+         id="text8217"
+         sodipodi:linespacing="125%"
+         transform="translate(-369.06219,654.70992)"><tspan
+           sodipodi:role="line"
+           id="tspan8219" /></text>
     </g>
     <g
        transform="translate(-0.35335609,-639.42748)"
@@ -2766,7 +2777,7 @@
          style="fill:#ffb13b;fill-opacity:1;fill-rule:evenodd;stroke:none" />
       <path
          style="fill:#664444;fill-rule:evenodd;stroke:none;fill-opacity:1"
-         d="m 582.78341,654.66931 9.9994,-0.11018 c -0.3383,-5.22455 0.88626,-10.69755 3.52781,-15.40431 2.6352,-4.71076 6.74825,-8.74915 11.66653,-11.34159 4.95727,-2.61995 10.81441,-3.80416 16.56084,-3.26235 0,0 0,10e-6 10e-6,10e-6 5.74709,0.53719 11.4444,2.81068 16.08685,6.51163 4.64451,3.69862 8.25973,8.84918 10.17243,14.64403 1.9142,5.79442 2.1268,12.24216 0.51501,18.29894 2.14328,-5.88973 2.55985,-12.48637 1.09434,-18.75002 -1.46701,-6.26323 -4.80575,-12.15078 -9.57837,-16.70669 -4.77468,-4.55357 -10.93139,-7.72798 -17.58123,-8.96161 0,0 0,0 0,0 -6.6505,-1.22902 -13.69857,-0.50205 -20.09288,2.16584 -6.33751,2.65077 -11.92264,7.1597 -15.90343,12.95669 -3.97444,5.80099 -6.26583,12.76783 -6.46731,19.95961 z"
+         d="m 645.1142,626.12651 -2.48393,2.81477 c -0.0274,-0.0242 -0.0549,-0.0484 -0.0825,-0.0725 -4.89472,-4.2889 -11.03676,-7.11167 -17.47911,-8.03309 -6.44268,-0.91913 -13.12939,0.0711 -19.02915,2.81809 0,0 0,0 0,0 -5.84891,2.7258 -10.87408,7.15464 -14.31321,12.61469 -3.43724,5.46125 -5.25905,11.90702 -5.18906,18.35953 l 2.4848,-0.0274 c -0.0668,-5.96517 1.62765,-11.96048 4.80711,-17.00813 3.17758,-5.04883 7.85156,-9.16816 13.25966,-11.68615 0,0 0,0 0,0 5.45306,-2.54144 11.67287,-3.46255 17.62845,-2.61066 5.95592,0.8496 11.66909,3.47527 16.19252,7.44179 0.0255,0.0223 0.0509,0.0446 0.0763,0.067 l -2.48847,2.81991 c 4.48397,2.84291 8.34519,7.23676 10.69032,12.53326 2.36289,5.32519 3.20466,11.62402 2.12436,17.84786 2.67476,-5.72267 3.72051,-12.46822 2.70369,-19.2011 -1.01557,-6.69375 -4.04918,-13.28161 -8.90178,-18.67788 z"
          id="path11325"
          inkscape:path-effect="#path-effect11327;#path-effect11329"
          inkscape:original-d="m 587.78311,654.61422 c 0,0 -27.06896,-45.29908 18.78254,-29.8311 45.8515,15.46798 44.74664,39.22237 44.74664,39.22237"
@@ -2835,42 +2846,6 @@
     </g>
     <g
        id="g11531">
-      <rect
-         style="fill:#e9ebaa;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         id="rect11610"
-         width="138.18898"
-         height="38.976379"
-         x="28.659763"
-         y="631.72168"
-         rx="3"
-         ry="3.0000002" />
-      <rect
-         style="fill:#fefb53;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         id="rect11612"
-         width="138.18898"
-         height="38.976379"
-         x="28.659763"
-         y="672.26477"
-         rx="3"
-         ry="3.0000002" />
-      <rect
-         style="fill:#ffb13b;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         id="rect11614"
-         width="138.18898"
-         height="38.976379"
-         x="28.659763"
-         y="712.8078"
-         rx="3"
-         ry="3.0000002" />
-      <rect
-         style="fill:#c2e15e;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         id="rect11616"
-         width="138.18898"
-         height="38.976379"
-         x="28.659763"
-         y="753.35089"
-         rx="3"
-         ry="3.0000002" />
       <g
          transform="matrix(1.0655828,0,0,1.0655828,-25.77279,-49.50531)"
          id="g11519">
@@ -3232,61 +3207,229 @@
            x="566.90405"
            id="tspan11517"
            sodipodi:role="line">-360</tspan></text>
+      <g
+         id="g4604">
+        <text
+           sodipodi:linespacing="125%"
+           id="text11596"
+           y="533.68927"
+           x="25.64994"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+           xml:space="preserve"><tspan
+             y="533.68927"
+             x="25.64994"
+             id="tspan11598"
+             sodipodi:role="line">x- полученное значение угла</tspan><tspan
+             id="tspan11600"
+             y="553.68927"
+             x="25.64994"
+             sodipodi:role="line">y- вычисленное</tspan><tspan
+             id="tspan11636"
+             y="573.68927"
+             x="25.64994"
+             sodipodi:role="line">(≲ не обязательно включать</tspan><tspan
+             id="tspan11634"
+             y="593.68927"
+             x="25.64994"
+             sodipodi:role="line">именно в таком порядке)</tspan><tspan
+             id="tspan3730"
+             y="613.68927"
+             x="25.64994"
+             sodipodi:role="line">d - direction</tspan><tspan
+             id="tspan3732"
+             y="633.68927"
+             x="25.64994"
+             sodipodi:role="line">f - forward</tspan><tspan
+             id="tspan3726"
+             y="653.68927"
+             x="25.64994"
+             sodipodi:role="line">r - reverse</tspan></text>
+        <g
+           id="g4578">
+          <rect
+             style="fill:#e9ebaa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="rect11610"
+             width="138.18898"
+             height="38.976379"
+             x="20.659763"
+             y="659.72168"
+             rx="3"
+             ry="3.0000002" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3736"
+             y="673.68927"
+             x="25.64994"
+             style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+             xml:space="preserve"><tspan
+               id="tspan3752"
+               y="673.68927"
+               x="25.64994"
+               sodipodi:role="line">-360 ⩽ x &lt; -180</tspan><tspan
+               id="tspan3754"
+               y="693.68927"
+               x="25.64994"
+               sodipodi:role="line">y=x + 360;   d=f</tspan><tspan
+               id="tspan3774"
+               y="713.68927"
+               x="25.64994"
+               sodipodi:role="line" /></text>
+        </g>
+        <g
+           id="g4585">
+          <rect
+             style="fill:#fefb53;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="rect11612"
+             width="138.18898"
+             height="38.976379"
+             x="20.659763"
+             y="700.26477"
+             rx="3"
+             ry="3.0000002" />
+          <text
+             xml:space="preserve"
+             style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+             x="25.64994"
+             y="713.68927"
+             id="text3776"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               x="25.64994"
+               y="713.68927"
+               id="tspan3796">-180 ≲ x &lt; 0</tspan><tspan
+               sodipodi:role="line"
+               x="25.64994"
+               y="733.68927"
+               id="tspan3798">y=x + 180;   d=r</tspan><tspan
+               sodipodi:role="line"
+               x="25.64994"
+               y="753.68927"
+               id="tspan3814" /></text>
+        </g>
+        <g
+           id="g4592">
+          <rect
+             style="fill:#ffb13b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="rect11614"
+             width="138.18898"
+             height="38.976379"
+             x="20.659763"
+             y="740.8078"
+             rx="3"
+             ry="3.0000002" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3816"
+             y="753.68927"
+             x="25.64994"
+             style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+             xml:space="preserve"><tspan
+               id="tspan3840"
+               y="753.68927"
+               x="25.64994"
+               sodipodi:role="line">0 ⩽ x ⩽ 180</tspan><tspan
+               id="tspan3854"
+               y="773.68927"
+               x="25.64994"
+               sodipodi:role="line">y=x;               d=f</tspan></text>
+        </g>
+        <g
+           id="g4598">
+          <rect
+             style="fill:#c2e15e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="rect11616"
+             width="138.18898"
+             height="38.976379"
+             x="20.659763"
+             y="781.35089"
+             rx="3"
+             ry="3.0000002" />
+          <text
+             xml:space="preserve"
+             style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+             x="25.64994"
+             y="793.68927"
+             id="text3856"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               x="25.64994"
+               y="793.68927"
+               id="tspan3884">180 &lt; x ⩽ 360</tspan><tspan
+               sodipodi:role="line"
+               x="25.64994"
+               y="813.68927"
+               id="tspan3894">y=x - 180;     d=r</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+           x="25.64994"
+           y="853.68927"
+           id="text3896"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="25.64994"
+             y="853.68927"
+             id="tspan3930">всё гораздо проще:</tspan><tspan
+             sodipodi:role="line"
+             x="25.64994"
+             y="873.68927"
+             id="tspan3932">y=x%180</tspan><tspan
+             sodipodi:role="line"
+             x="25.64994"
+             y="893.68927"
+             id="tspan3934">d = check_odd(x/180)</tspan></text>
+      </g>
+    </g>
+    <g
+       transform="translate(375.17254,1027.679)"
+       id="g8225">
+      <rect
+         style="fill:#fefbf1;fill-opacity:1;fill-rule:nonzero;stroke:#e9ebaa;stroke-width:3.00000048;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect8227"
+         width="70.678299"
+         height="22.712547"
+         x="-17.530405"
+         y="281.47012"
+         rx="3"
+         ry="3.0000005"
+         transform="scale(1,-1)" />
       <text
          xml:space="preserve"
          style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
-         x="35.64994"
-         y="565.68927"
-         id="text11596"
+         x="-9.4133806"
+         y="-287.16238"
+         id="text8229"
          sodipodi:linespacing="125%"><tspan
+           id="tspan8233"
            sodipodi:role="line"
-           id="tspan11598"
-           x="35.64994"
-           y="565.68927">x- полученное значение угла</tspan><tspan
+           x="-9.4133806"
+           y="-287.16238">forward</tspan></text>
+    </g>
+    <g
+       id="g8237"
+       transform="translate(377.48067,1065.663)">
+      <rect
+         transform="scale(1,-1)"
+         ry="3.0000005"
+         rx="3"
+         y="279.4541"
+         x="-19.83853"
+         height="22.712547"
+         width="70.678299"
+         id="rect8239"
+         style="fill:#fefbf1;fill-opacity:1;fill-rule:nonzero;stroke:#e9ebaa;stroke-width:3.00000048;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text8241"
+         y="-287.16238"
+         x="-9.4133806"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#664444;fill-opacity:1;stroke:none;font-family:Old Standard;-inkscape-font-specification:Old Standard"
+         xml:space="preserve"><tspan
+           y="-287.16238"
+           x="-9.4133806"
            sodipodi:role="line"
-           x="35.64994"
-           y="585.68927"
-           id="tspan11600">y- вычисленное</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="605.68927"
-           id="tspan11636">(≲ не обязательно включать</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="625.68927"
-           id="tspan11634">именно в таком порядке)</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="645.68927"
-           id="tspan11618">-360 ⩽ x &lt; -180</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="665.68927"
-           id="tspan11602">y=x + 360</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="685.68927"
-           id="tspan11604">-180 ≲ x &lt; 0</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="705.68927"
-           id="tspan11620">y=x + 180</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="725.68927"
-           id="tspan11606">0 ⩽ x ⩽ 180</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="745.68927"
-           id="tspan11622">y=x</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="765.68927"
-           id="tspan11628">180 &lt; x ⩽ 360</tspan><tspan
-           sodipodi:role="line"
-           x="35.64994"
-           y="785.68927"
-           id="tspan11624">y=x - 180</tspan></text>
+           id="tspan8243">reverse</tspan></text>
     </g>
   </g>
 </svg>
