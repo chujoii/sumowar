@@ -46,6 +46,14 @@
 #include <Servo.h>
 #include <Wire.h>
 
+//#include "ocr.ino"
+
+#include "logic.h"
+#include "logic.c" // very strange
+
+//#include "geometry.h"
+//#include "geometry.c" // very strange
+
 // -------------------------------------- physical dimensions --------------------------------------
 
 const int num_of_wheel = 4;
@@ -113,27 +121,11 @@ const int delay_us_between_step = 1;
 
 
 
-int sign(int x){
-	if (x>=0) {return 1;} else {return -1;}
-}
-
-int remainder(int a, int b)
-{
-	// exist -330%180 = -150
-	// want  -330%180 = 30
-	
-	return (b+(a%b))%b;
-}
-
-boolean xorr(boolean a, boolean b)
-{
-	return ((!a) && b) || (a && (!b));
-}
 
 boolean check_odd_turn(int angle, int oneturn)
 {
 	//return abs(x/2);
-	return xorr((angle/oneturn)%2 == 0, angle>0);
+	return (((angle/oneturn)%2 == 0) ^ (angle>0));
 }
 
 int set_wheels (int xt, int yt, int desirable_angular_velocity) 
@@ -177,8 +169,8 @@ int set_wheels (int xt, int yt, int desirable_angular_velocity)
 		angle[n] = int(atan(y[n]/x[n])*(180.0/3.1415926));   //   *(180/3.14) convert rad->gradus
 		
 		// See drawings/motion.svg
-		angle[n] = remainder(angle[n], 180);
-		if (check_odd_turn(i,180)) {
+		angle[n] = myremainder(angle[n], 180);
+		if (check_odd_turn(angle[n],180)) {
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_a]);          // 1 power
 			wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_b])); // 0 gnd
 		}else{
