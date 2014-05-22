@@ -1,0 +1,227 @@
+#+OPTIONS: LaTeX:t          Do the right thing automatically (MathJax)
+#+OPTIONS: LaTeX:dvipng     Force using dvipng images
+#+OPTIONS: LaTeX:nil        Do not process LaTeX fragments at all
+#+OPTIONS: LaTeX:verbatim   Verbatim export, for jsMath or so
+#+ATTR_HTML: width="10in"
+
+% org-export-with-LaTeX-fragments
+
+
+
+README.org --- description
+
+
+
+Copyright (C) 2012 Roman V. Prikhodchenko
+
+
+
+Author: Roman V. Prikhodchenko <chujoii@gmail.com>
+
+
+
+  This file is part of markerway.
+
+  markerway is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  markerway is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with markerway.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+* Keywords:
+  robot auto 
+
+
+
+* Description:
+  
+
+* Usage:
+  use it
+
+
+
+* Code:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Функции для работы с аппаратурой почти готовы.
+Вам их писать не нужно. Ваша задача только сумо (бой роботов).
+
+Вот список функций для получения данных и для отдачи команд роботу:
+
+
+int set_wheels_straight (int angle, int desirable_linear_velocity)
+{
+   /*
+   устанавливает движение робота по прямой линии
+   под углом angle = 0 .. 360, причём 90 градусов - движение вперёд
+   со скоростью desirable_linear_velocity = -255 .. 255
+   */
+}
+
+
+
+int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
+{
+   /*
+   x, y - координаты точки вращения относительно центра робота
+          в ?миллиметрах? (миллиметры - потому что величины будут целыми,
+	  сохранится большая точность,
+	  размер максимального поля 32767мм~33метра - хватает для трассы)
+   desirable_angular_velocity угловая скорость вращения
+   */
+}
+
+в любой момент вы можете прочитать массивы отсканированного
+пространства, данные массивы обновляются автоматически (по прерываниям):
+
+#define ir_hi_angle = 9 // углы в градусах
+#define ir_hi_dimension = 40 // размер массива сейчас не известен (ещё не завершён) шаг двигателя 9 градусов -> 360/9 = 40
+int ir_hi[ir_hi_dimension]; // данные инфракрасного датчика на башне
+
+#define us_hi_angle = 9
+#define us_hi_dimension = 40 
+int us_hi[ir_hi_dimension]; // данные ультразвукового датчика на башне
+
+#define us_lo_angle = 15
+#define us_lo_dimension = 12 // размер массива сейчас не известен (нужны эксперименты) угол ультразвукового излучателя 15 градусов -> 180/15 = 12
+int us_lo[ir_lo_dimension]; // данные ультразвукового датчика на бампере
+
+#define line_sensor_dimension = 4
+int line_sensor[line_sensor_dimension]; // инфракрасные датчики линии под каждым из четырёх колёс
+
+#define button_sensor_dimension = 8
+int button_sensor[button_sensor_dimension]; // кнопки по бокам робота с каждой стороны по две штуки
+
+/*
+        перед
+        1    2
+
+
+
+  8                 3
+левый             правый 
+борт              борт
+  7                 4
+
+
+
+        6    5
+         зад
+
+*/
+
+// доплонительные функции:
+int min_index(int p[], int dimension)
+{
+   /*
+   вычисляет номер минимального элемента массива 
+   */
+}
+
+int cycle_delay_ms = 10; // милисекунды
+
+
+
+// у робота будет два оружия - отвал (спереди) и переворачивалка (сзади)
+int bulldozer_blade(int f)
+{
+   поднять отвал с усилием f (0..255)
+   результатом будет реальная высота поднятия (0..1023)
+   очень сильно сажает батарейку - подняли, вытолкали за линию и выключили. если не удалось поднять за ~10 секунд то тоже выключили. выключать нужно самостоятельно
+}
+
+
+int bulldozer_turn(int f)
+{
+   перевернуть с усилием f (0..255)
+   результатом будет 0 (датчик отсутствует)
+   очень сильно сажает батарейку - перевернули подержали так примерно ~10 секунд и выключили самостоятельно.
+}
+
+
+
+
+
+если что забыл то спрашивайте
+
+
+
+вот как примерно будет выглядеть ваша программа
+
+
+
+void robosumo(){
+   // найдём ближайшую цель - в реальности не сработает потому что ближайшей целью скорее всего окажется нога зрителя
+   int enemy_angle = min_index(ir_hi, ir_hi_dimension) * ir_hi_angle; // номер минимального умножим на шаг в градусах получим угол расположения противника
+   int speed = 255;
+   int counter; // счётчик в цикле
+
+   boolean all_white = true; //
+
+   if (button_sensor[0] || button_sensor[1]){
+      bulldozer_blade(255); // не забудьте выключить
+   }
+   if (button_sensor[5] || button_sensor[6]){
+      bulldozer_turn(255); // не забудьте выключить 
+   }
+   
+   
+   for (counter = 0; counter< line_sensor_dimension; counter++){
+      // сравнивать таким образом "x > white" плохо (условно белый цвет от 0 до white хотя может быть наоборт белый от white до 1023)
+      // можно использовать функцию itisblack(line_sensor[0])
+      if (itisblack(line_sensor[counter])) { // если не дотягивает до белого то ...
+         all_white = false;
+      }
+   }   
+
+   if (all_white) {
+      // если все датчики линии показывают белый свет то разворачиваемся (толкать лучше отвалом)
+      // но закомментировано потому что одновременное движение и вращение описываются другими формулами (Трохоида - например удлинённая циклоида)
+      // вы сперва повернитесь (например 3 секунды и только потом двигайтесь)
+      // set_wheels_rotate (0, 0, 10); // 10 маленькая скорость
+      
+
+      // если все датчики линии показывают белый свет то толкаем противника
+      set_wheels_straight (enemy_angle, 255);
+   } else {
+      // раз коснулись линии то мы вытолкали противника и значит останавливаемся (скорость = 0)
+      set_wheels_straight (enemy_angle, 0);
+   }
+
+
+   delay(cycle_delay_ms); // небольшая задержка нужна!
+}
