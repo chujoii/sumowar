@@ -508,7 +508,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1"
      inkscape:cx="368.98786"
-     inkscape:cy="177.16352"
+     inkscape:cy="243.11816"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -527,7 +527,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/" />
         <dc:creator>
@@ -2104,7 +2104,7 @@
    style="font-size:65.00091553%;baseline-shift:sub"
    id="tspan4399">n</tspan>=x<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan4490">t</tspan>+W<tspan
+   id="tspan4490">t</tspan>-W<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
    id="tspan4412">x</tspan></tspan></text>
     <text
@@ -2121,7 +2121,7 @@
    id="tspan4418"
    style="font-size:65.00091553%;baseline-shift:sub">n</tspan>=y<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan4492">t</tspan>+W<tspan
+   id="tspan4492">t</tspan>-W<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
    id="tspan4422">y</tspan></tspan></text>
     <g
