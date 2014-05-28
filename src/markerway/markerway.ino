@@ -63,8 +63,8 @@
 // -------------------------------------- physical dimensions --------------------------------------
 
 const int num_of_wheel = 4;
-const int R_dimension_a = 70; // mm    half of distance from the robots center to the wheel along the axis x.    fixme 
-const int R_dimension_b = 70; // mm    half of distance from the robots center to the wheel along the axis y.    fixme
+const int R_dimension_a = 62; // 62mm    half of distance from the robots center to the wheel along the axis x.    fixme 
+const int R_dimension_b = 62; // 62mm    half of distance from the robots center to the wheel along the axis y.    fixme
 
 
 
@@ -85,77 +85,77 @@ const int R_dimension_b = 70; // mm    half of distance from the robots center t
    On boards other than the Mega, use of the Servo library disables analogWrite() (PWM) functionality on pins 9 and 10.
 
    pin - capability - function   (if pin without [] == NotConnected)
-   [0]  - rx         - rx
-   [1]  - tx         - tx
-   [2]  - pwm        - wheel0
-   [3]  - pwm        - wheel1
-   [4]  - pwm        - wheel2
-   [5]  - pwm        - wheel3
-   6    - pwm        - 
-   7    - pwm        - 
-   8    - pwm        - 
-   9    - pwm        - 
-   10   - pwm        - 
-   11   - pwm        - 
-   12   - pwm        - 
-   13   - pwm        - 
-   14   - tx3        - 
-   15   - rx3        - 
-   16   - tx2        - 
-   17   - rx2        - 
-   18   - tx1        - 
-   19   - rx1        - 
-   [20] - sda        - sda
-   [21] - scl        - scl
-   [22] -            - servo0
-   [23] -            - servo1
-   [24] -            - servo2
-   [25] -            - servo3
-   26   -            - 
-   27   -            - 
-   28   -            - 
-   29   -            - 
-   30   -            - 
-   31   -            - 
-   32   -            - 
-   33   -            - 
-   34   -            - 
-   35   -            - 
-   36   -            - 
-   37   -            - 
-   38   -            - 
-   39   -            - 
-   40   -            - 
-   41   -            - 
-   42   -            - 
-   43   -            - 
-   44   -            - 
-   45   -            - 
-   46   -            - 
-   47   -            - 
-   48   -            - 
-   49   -            - 
-   50   -            - 
-   51   -            - 
-   52   -            - 
-   [53] -            - start_button
+   [0]  - rx             - rx
+   [1]  - tx             - tx
+   2    - pwm, ext_int 0 - 
+   3    - pwm, ext_int 1 - 
+   4    - pwm            - 
+   [5]  - pwm            - wheel0
+   [6]  - pwm            - wheel2  // fixme 6->7 перепутал ножки?
+   [7]  - pwm            - wheel1  // fixme 7->6 перепутал ножки?
+   [8]  - pwm            - wheel3
+   9    - pwm            - 
+   10   - pwm            - 
+   11   - pwm            - 
+   12   - pwm            - 
+   13   - pwm            - 
+   14   - tx3            - 
+   15   - rx3            - 
+   16   - tx2            - 
+   17   - rx2            - 
+   18   - tx1, ext_int 5 - 
+   19   - rx1, ext_int 4 - 
+   [20] - sda, ext_int 3 - sda
+   [21] - scl, ext_int 2 - scl
+   [22] -                - servo0
+   [23] -                - servo1
+   [24] -                - servo2
+   [25] -                - servo3
+   26   -                - 
+   27   -                - 
+   28   -                - 
+   29   -                - 
+   30   -                - 
+   31   -                - 
+   32   -                - 
+   33   -                - 
+   34   -                - 
+   35   -                - 
+   36   -                - 
+   37   -                - 
+   38   -                - 
+   39   -                - 
+   40   -                - 
+   41   -                - 
+   42   -                - 
+   43   -                - 
+   44   -                - 
+   45   -                - 
+   46   -                - 
+   47   -                - 
+   48   -                - 
+   49   -                - 
+   50   -                - 
+   51   -                - 
+   52   -                - 
+   [53] -                - start_button
 
-   A0   -            - 
-   A1   -            - 
-   A2   -            - 
-   A3   -            - 
-   A4   -            - 
-   A5   -            - 
-   A6   -            - 
-   A7   -            - 
-   A8   -            - 
-   A9   -            - 
-   A10  -            - 
-   A11  -            - 
-   A12  -            - 
-   A13  -            - 
-   A14  -            - 
-   A15  -            - 
+   A0   -                - 
+   A1   -                - 
+   A2   -                - 
+   A3   -                - 
+   A4   -                - 
+   A5   -                - 
+   A6   -                - 
+   A7   -                - 
+   A8   -                - 
+   A9   -                - 
+   A10  -                - 
+   A11  -                - 
+   A12  -                - 
+   A13  -                - 
+   A14  -                - 
+   A15  -                - 
 */
 
 // Servo
@@ -168,17 +168,17 @@ Servo servo_wheel[num_of_wheel];
 // Wheel. this only PWM for speed control. direction - i2c port expander
 const int i2c_wheel_addr = 0x21;
 //                                   0 coord x       1  coord y      2 pwm 3 pin_A(i2c) 4 pin_B(i2c)
-const int wheel[num_of_wheel][5] = {{-R_dimension_a, -R_dimension_b, 2,    B00000010,   B00000001},  //0   2,  1
-                                    {-R_dimension_a, +R_dimension_b, 3,    B00001000,   B00000100},  //1   8,  4
-                                    {+R_dimension_a, -R_dimension_b, 4,    B00100000,   B00010000},  //2  32, 16
-                                    {+R_dimension_a, +R_dimension_b, 5,    B10000000,   B01000000}}; //3 128, 64
+const int wheel[num_of_wheel][5] = {{-R_dimension_a, -R_dimension_b, 5,    B00000010,   B00000001},  //0   2,  1
+                                    {-R_dimension_a, +R_dimension_b, 7,    B00001000,   B00000100},  //1   8,  4 // fixme 6->7 перепутал ножки?
+                                    {+R_dimension_a, -R_dimension_b, 6,    B00100000,   B00010000},  //2  32, 16 // fixme 7->6 перепутал ножки?
+                                    {+R_dimension_a, +R_dimension_b, 8,    B10000000,   B01000000}}; //3 128, 64
 
 
 
 // -------------------------------------- fixme --------------
 
 // global interrupt pin
-const int pin_global_interrupt = 2;
+//const int pin_global_interrupt = 2;
 
 // optic line-sensors
 //const int analog_pin_optocouple = A0;
@@ -305,11 +305,11 @@ int set_wheels_straight (int angle, int desirable_linear_velocity)
 	int wheel_collector_a, wheel_collector_b; // 3, 4: number colum in array "wheel": 0 coord x       1  coord y      2 pwm 3 pin_A(i2c) 4 pin_B(i2c)
 
 	if (desirable_linear_velocity > 0) {
-		wheel_collector_a = 3;
-		wheel_collector_b = 4;
-	}else{
 		wheel_collector_a = 4;
 		wheel_collector_b = 3;
+	}else{
+		wheel_collector_a = 3;
+		wheel_collector_b = 4;
 	}
 
 	for (n=0; n<num_of_wheel; n++){
@@ -317,15 +317,21 @@ int set_wheels_straight (int angle, int desirable_linear_velocity)
 		
 		// See drawings/motion.svg
 		
-		if (check_odd_turn(real_angle,180)) {
+		Serial.print(angle);
+		
+		if (!check_odd_turn(angle,180)) {
+			Serial.print(angle);
+			Serial.print("(  0-180) ");
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_a]);          // 1 power
 			wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_b])); // 0 gnd
 		}else{
+			Serial.print("(180-360) ");
 			wheel_state = wheel_state & (0xff - byte(wheel[n][wheel_collector_a])); // 0 gnd
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_b]);          // 1 power
 		}
 		
-		servo_wheel[n].write(real_angle);
+		servo_wheel[n].write(map(real_angle, 0, 180, 180, 0)); // map for inversion
+		Serial.print("servo[");Serial.print(n);Serial.print("] = ");Serial.println(real_angle);
 		display_wheel_state_angle(n, real_angle);
 	}
 
@@ -334,7 +340,7 @@ int set_wheels_straight (int angle, int desirable_linear_velocity)
 	Wire.write(wheel_state);
 	Wire.endTransmission();
 	Serial.println(wheel_state, BIN);
-
+	
 
 
 	for (n=0; n<num_of_wheel; n++){
@@ -347,6 +353,27 @@ int set_wheels_straight (int angle, int desirable_linear_velocity)
 	return real_linear_velocity;
 }
 
+void test_speed_set_wheels_straight()
+{
+	int i;
+	
+	for (i=0; i<255; i++){
+		set_wheels_straight(90, i);
+		delay(100);
+	}
+	set_wheels_straight(90, 0); // stop motor
+}
+
+void test_angle_set_wheels_straight()
+{
+	int i;
+
+	for (i=0; i<360; i++){
+		set_wheels_straight(i, 92);
+		delay(100);
+	}
+	set_wheels_straight(90, 0); // stop motor
+}
 
 
 
@@ -355,7 +382,7 @@ int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
 	/*
 	  n - number of wheel
 	  x,y - center of rotation mm
-	  desirable angular velocity // fixme: for motion without rotation R=infinity => speed = ?  linear velocity 
+	  desirable angular velocity // [degree/sec]           fixme: for motion without rotation R=infinity => speed = ?  linear velocity 
 	  velocity <0 counter-clockwise
 	  velocity >0 clockwise
 	  
@@ -363,6 +390,7 @@ int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
 	*/
 	
 	int angle[num_of_wheel];
+	int real_angle[num_of_wheel];
 	double x[num_of_wheel];
 	double y[num_of_wheel];
 	double r[num_of_wheel];
@@ -375,26 +403,27 @@ int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
 	
 	
 	if (desirable_angular_velocity >= 0) {
-		wheel_collector_a = 3;
-		wheel_collector_b = 4;
-	}else{
 		wheel_collector_a = 4;
 		wheel_collector_b = 3;
+	}else{
+		wheel_collector_a = 3;
+		wheel_collector_b = 4;
 	}
 	
 	
 	for (n=0; n<num_of_wheel; n++){
+
 		// See drawings/chassis.svg
 		x[n] = xt - wheel[n][0];
 		y[n] = yt - wheel[n][1];
 		
 		r[n] = sqrt((x[n]*x[n]) + (y[n]*y[n]));
+	
 
-
-		angle[n] = int(atan(y[n]/x[n])*(180.0/3.1415926));   //   *(180/3.14) convert rad->gradus
+		angle[n] = int(atan(y[n]/x[n])*(180.0/3.1415926)) + 90;   //   "*(180/3.14)" convert radian->gradus       "+90" because: "axis of rotation of a wheel" and "plane of rotation of the wheel," they are perpendicular.
 		
 		// See drawings/motion.svg
-		angle[n] = myremainder(angle[n], 180);
+		real_angle[n] = myremainder(angle[n], 180);
 	
 		if (check_odd_turn(angle[n],180)) {
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_a]);          // 1 power 
@@ -404,9 +433,10 @@ int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
 			wheel_state = wheel_state | byte(wheel[n][wheel_collector_b]);          // 1 power
 		}
 	
-		servo_wheel[n].write(angle[n]);
-		Serial.print("servo[");Serial.print(n);Serial.print("] = ");Serial.println(angle[n]);
-	}
+		servo_wheel[n].write(map(real_angle[n], 0, 180, 180, 0)); // map for inversion
+		Serial.print("servo[");Serial.print(n);Serial.print("] = ");Serial.println(real_angle[n]);
+		display_wheel_state_angle(n, real_angle[n]);
+        }
 
 	
 	Wire.beginTransmission(i2c_wheel_addr);
@@ -422,17 +452,41 @@ int set_wheels_rotate (int xt, int yt, int desirable_angular_velocity)
 	// calculate maximum radius => maximum linear speed
 	double max_R = max(max(max(r[0], r[1]), r[2]), r[3]);
 	// maximum linear_velocity = 255; (pwm)
-	int real_angular_velocity = 255 / max_R; // fixme strange dimension of 255: rad/sec OR gradus/sec OR rpm ?
-	real_angular_velocity = constrain(abs(desirable_angular_velocity), 0, real_angular_velocity);
+	int max_angular_velocity = 255 / max_R; // v=w*r  max_v=255  max_w=max_v/max_r    fixme strange dimension of 255: rad/sec OR gradus/sec OR rpm ?
+	int real_angular_velocity = constrain(abs(desirable_angular_velocity), 0, max_angular_velocity);
+	Serial.print("real_angular_velacity=");Serial.println(real_angular_velocity);
 
 	
 	for (n=0; n<num_of_wheel; n++){
 		analogWrite(wheel[n][2], constrain(int(r[n]*real_angular_velocity), 0, 255)); // linear_velocity = R * angular_velocity
 		Serial.print("speed[");Serial.print(n);Serial.print("] = ");Serial.println(constrain(int(r[n]*real_angular_velocity), 0, 255));
-	}
-
+		display_wheel_state_velocity(n, constrain(int(r[n]*real_angular_velocity), 0, 255));
+        }
+	
 
 	return real_angular_velocity;
+}
+
+
+
+void test_diameter_set_wheels_rotate(int cw_or_ccw)
+{
+	int x, y;
+
+
+	// cw>0
+	// ccw<0
+	for (x = -3*(R_dimension_a/2); x<= 3*(R_dimension_a/2); x+=(R_dimension_a/2)){
+		for (y = -3*(R_dimension_b/2); y<= 3*(R_dimension_b/2); y+=(R_dimension_b/2)){
+			Serial.print("x = ");Serial.print(x);Serial.print("   y = ");Serial.println(y);
+			set_wheels_rotate (x, y, 100);
+			Serial.println();
+			delay(1000);
+			wait_for_start_button();
+		}
+	}
+
+	set_wheels_straight(90, 0); // stop motor
 }
 
 
@@ -458,19 +512,19 @@ void setup()
 
 	pinMode(pin_start_button, INPUT);
 	digitalWrite(pin_start_button, HIGH); // internal pull-up resistor
-
+	
 	servo_wheel[0].attach(pin_servo_0);
 	servo_wheel[1].attach(pin_servo_1);
 	servo_wheel[2].attach(pin_servo_2);
 	servo_wheel[3].attach(pin_servo_3);
-
-
+	
+	
 	Serial.begin(9600);
 	//Serial.println("Hello");
-
+	
 	Wire.begin(); // join i2c bus
-
-
+	
+	
 	lcd.init();                      // initialize the lcd 
 	lcd.backlight();
 	
@@ -478,34 +532,16 @@ void setup()
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("Hello");
-
-	/*
-	int i;
-
-	for (i=0; i<255; i++){
-		set_wheels_straight(90, i);
-		delay(100);
-	}
-	*/
+	
+	
+	set_wheels_straight(90, 0); // stop motor
 
 
-	set_wheels_straight(90, 63);
-	delay(1000);
-	set_wheels_straight(180, 63);
-	delay(1000);
-	set_wheels_straight(270, 63);
-	delay(1000);
-	set_wheels_straight(0, 63);
-	delay(1000);
-	set_wheels_straight(90, 0);
-
-	//set_wheels_rotate (0, 0, 0);
-
-
-	delay(1000);
+	//delay(1000);
 	
 	
 	
+
 	
 	
 	
@@ -513,8 +549,10 @@ void setup()
 	lcd.setCursor(0,0);
 	lcd.print("wait for start");
 	
+	wait_for_start_button();
 	
-	
+	test_diameter_set_wheels_rotate();
+
 	wait_for_start_button();
 	
 	
@@ -522,24 +560,6 @@ void setup()
 	lcd.setCursor(0,0);
 	lcd.print("start");
 	
-	
-
-
-
-
-	
-	
-	int x, y;
-	for (x = -3*(R_dimension_a/2); x<= 3*(R_dimension_a/2); x+=(R_dimension_a/2)){
-		for (y = -3*(R_dimension_b/2); y<= 3*(R_dimension_b/2); y+=(R_dimension_b/2)){
-			Serial.print("x = ");Serial.print(x);Serial.print("   y = ");Serial.println(y);
-			set_wheels_rotate (x, y, 96);
-			Serial.println();
-			delay(1000);
-		}
-	}
-	
-	set_wheels_rotate (0, 0, 0);
 
 }
 
