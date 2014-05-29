@@ -87,9 +87,9 @@ const int R_dimension_b = 62; // 62mm    half of distance from the robots center
    pin - capability - function   (if pin without [] == NotConnected)
    [0]  - rx             - rx
    [1]  - tx             - tx
-   2    - pwm, ext_int 0 - 
-   3    - pwm, ext_int 1 - 
-   4    - pwm            - 
+   [2]  - pwm, ext_int 0 - mousecam
+   [3]  - pwm, ext_int 1 - mousecam
+   [4]  - pwm            - mousecam
    [5]  - pwm            - wheel0
    [6]  - pwm            - wheel2  // fixme 6->7 перепутал ножки?
    [7]  - pwm            - wheel1  // fixme 7->6 перепутал ножки?
@@ -175,6 +175,14 @@ const int wheel[num_of_wheel][5] = {{-R_dimension_a, -R_dimension_b, 5,    B0000
 
 
 
+
+// -------------------------------------- mouse cam ----------------
+// Number of pixels in row and column
+#define imgWidth 16
+
+byte img[imgWidth][imgWidth];
+byte bwimg[imgWidth][imgWidth];
+
 // -------------------------------------- fixme --------------
 
 // global interrupt pin
@@ -251,11 +259,11 @@ void setup()
 	servo_wheel[3].attach(pin_servo_3);
 	
 	
-
 	set_wheels_straight(90, 0); // stop motor
 
-
-
+	
+	
+	
 	
 	Wire.begin(); // join i2c bus
 	
@@ -270,10 +278,12 @@ void setup()
 	
 
 	delay(1000);
-	Serial.begin(9600);
+	set_wheels_straight(90, 0); // stop motor
+	Serial.begin(115200);
+	set_wheels_straight(90, 0); // stop motor
+
 	//Serial.println("Hello");
 	
-	set_wheels_straight(90, 0); // stop motor
 
 
 	//delay(1000);
@@ -290,16 +300,24 @@ void setup()
 	
 	wait_for_start_button();
 	
-	test_diameter_set_wheels_rotate(100);
-	test_diameter_set_wheels_rotate(-100);
-
-	wait_for_start_button();
+	//test_diameter_set_wheels_rotate(100);
+	//test_diameter_set_wheels_rotate(-100);
+	//
+	//wait_for_start_button();
 	
 	
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("start");
 	
+
+
+
+
+	mouse_cam_init();
+
+
+
 
 }
 
@@ -327,12 +345,12 @@ int ground_scanner()
 void loop()
 {
 	//delayMicroseconds(delay_us_between_step);
-	
+	/*
 	lcd.clear();
 	lcd.setCursor(0,0);
 	lcd.print("wait...");
-
-	
+	*/
+	/*
 	Wire.requestFrom(i2c_btn_addr, 1);    // request 1 bytes from slave device 0x21
 
 	while(Wire.available())    // slave may send less than requested
@@ -352,7 +370,15 @@ void loop()
 	Wire.write(B10101010);              // sends one byte  
 	Wire.endTransmission();    // stop transmitting
 
+
+	
 	delay(1000);
+	*/
+
+
+
+
+
 
 }
 
