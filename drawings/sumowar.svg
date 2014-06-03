@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="744.09448"
+   height="524.40942"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -41,10 +41,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="359.51218"
-     inkscape:cy="502.09063"
+     inkscape:cx="376.59087"
+     inkscape:cy="255.81841"
      inkscape:document-units="px"
-     inkscape:current-layer="g3345"
+     inkscape:current-layer="g3351"
      showgrid="false"
      inkscape:window-width="1268"
      inkscape:window-height="751"
@@ -103,20 +103,21 @@ Russian word самовар [samovar] like combination of word &quot;sumo&quot; 
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-527.95272)">
     <g
        id="g3351"
        transform="translate(-10.795474,149.5332)">
       <use
          height="1052.3622"
          width="744.09448"
-         transform="matrix(-1,0,0,-1,765.68543,753.29579)"
+         transform="matrix(-1,0,0,-1,765.68543,1211.2958)"
          id="use3349"
          xlink:href="#g3345"
          y="0"
          x="0" />
       <g
-         transform="translate(-97.142857,11.428571)"
+         transform="translate(-97.142857,240.42857)"
          id="g3345">
         <path
            style="fill:none;stroke:#000000;stroke-width:10.62992096;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -152,7 +153,7 @@ Russian word самовар [samovar] like combination of word &quot;sumo&quot; 
          sodipodi:rx="19.5"
          sodipodi:ry="19.5"
          d="m 398,528.86218 a 19.5,19.5 0 1 1 -39,0 19.5,19.5 0 1 1 39,0 z"
-         transform="translate(5.795474,-151.5332)" />
+         transform="translate(5.795474,77.4668)" />
     </g>
   </g>
 </svg>

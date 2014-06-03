@@ -42,7 +42,7 @@
 */
 
 void linetracer() {
-
+	
 	get_img();
 	//SerialPrintImg(img);
 	binarization_img(img);
@@ -52,7 +52,24 @@ void linetracer() {
 	lcd.setCursor(0,0);
 	lcd.print(wave(bwimg, 8, 8));
 	SerialPrintImg(bwimg);
+
+	int a = simple_line_finder(bwimg, 8, 8, imgWidth-1);
 	Serial.print("start_line=");Serial.println(simple_line_finder(bwimg, 8, 8, imgWidth-1)); // top of robot
-	Serial.print("endeo_line=");Serial.println(simple_line_finder(bwimg, 8, 8, 0)); // down of robot
+	Serial.print("end_line=");Serial.println(simple_line_finder(bwimg, 8, 8, 0)); // down of robot
+
+
+	lcd.setCursor(0,0);
+	Serial.print("angle=");Serial.println(atan(8.0/a-8.0)/(180.0/3.1415926)-90); // down of robot
+	
+	
+	set_wheels_straight (atan(8.0/a-8.0)/(180.0/3.1415926)-90, 100);
+
+
+	//int x  = (C1*B2 - C2*B1)/(A1*B2 - A2*B1);
+	//int y = (A1*C2 - A2*C1)/(A1*B2 - A2*B1);
+	
+	//set_wheels_rotate (x, y, 100);
+	
+	
 	
 }

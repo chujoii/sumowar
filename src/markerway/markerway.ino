@@ -59,6 +59,7 @@
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
+int cfg = 0;
 
 // -------------------------------------- physical dimensions --------------------------------------
 
@@ -232,8 +233,61 @@ const int i2c_btn_addr = 0x22;
 
 
 
-void wait_for_start_button(){
-	while(digitalRead(pin_start_button) == HIGH){}
+int wait_for_start_button()
+{
+	
+	int c;
+	while(digitalRead(pin_start_button) == HIGH){
+		
+		Wire.requestFrom(i2c_btn_addr, 1);    // request 1 bytes from slave device 0x21
+		
+		while(Wire.available())    // slave may send less than requested
+		{ 
+			c = Wire.read(); // receive a byte as character
+			lcd.clear();
+			lcd.setCursor(0,0);
+			lcd.print("cfg: ");
+			lcd.print(c);
+			
+			lcd.setCursor(0,1);
+			//lcd.print("bin ");
+			//lcd.print(byte(c), BIN);         // print the character
+
+			switch (c) {
+			case 254:
+				lcd.print("presentation");
+				break;
+			case 253:
+				lcd.print("linetracing");
+				//do something when var equals 2
+				break;
+			case 251:
+				lcd.print("labyrint");
+				//do something when var equals 2
+				break;
+			case 247:
+				lcd.print("sumowar");
+				//do something when var equals 2
+				break;
+			default: 
+				c=0;
+				lcd.print("presentation");
+				// if nothing else matches, do the default
+				// default is optional
+			}
+			
+		}
+		
+		//Wire.beginTransmission(i2c_wheel_addr); // transmit to device #4
+		//Wire.write(B10101010);              // sends one byte  
+		//Wire.endTransmission();    // stop transmitting
+		
+		
+		
+		delay(100);
+		
+	}
+	return c;
 }
 
 
@@ -298,7 +352,7 @@ void setup()
 	lcd.setCursor(0,0);
 	lcd.print("wait for start");
 	
-	wait_for_start_button();
+	cfg = wait_for_start_button();
 	
 	//test_diameter_set_wheels_rotate(100);
 	//test_diameter_set_wheels_rotate(-100);
@@ -316,9 +370,9 @@ void setup()
 
 	mouse_cam_init();
 
-
-
-
+	
+	
+	
 }
 
 
@@ -351,32 +405,35 @@ void loop()
 	lcd.print("wait...");
 	*/
 	/*
-	Wire.requestFrom(i2c_btn_addr, 1);    // request 1 bytes from slave device 0x21
-
-	while(Wire.available())    // slave may send less than requested
-	{ 
-		byte c = Wire.read(); // receive a byte as character
-		lcd.clear();
-		lcd.setCursor(0,0);
-		lcd.print("readed ");
-		lcd.setCursor(0,1);
-		lcd.print("bin ");
-		lcd.print(byte(c), BIN);         // print the character
-	}
-	
-	
-
-	Wire.beginTransmission(i2c_wheel_addr); // transmit to device #4
-	Wire.write(B10101010);              // sends one byte  
-	Wire.endTransmission();    // stop transmitting
-
-
-	
-	delay(1000);
 	*/
 
 
-
+	switch (cfg) {
+	case 254:
+		//lcd.print("presentation");
+		presentation();
+		break;
+	case 253:
+		//lcd.print("linetracing");
+		linetracer();
+		//do something when var equals 2
+		break;
+	case 251:
+		//lcd.print("labyrint");
+		linetracer();
+		//do something when var equals 2
+		break;
+	case 247:
+		//lcd.print("sumowar");
+		linetracer();
+		//do something when var equals 2
+		break;
+	default:
+		presentation();
+		// if nothing else matches, do the default
+		// default is optional
+	}
+	
 
 
 
