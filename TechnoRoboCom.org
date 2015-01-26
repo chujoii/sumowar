@@ -1,20 +1,24 @@
 * url
 
-  http://www.petrsu.ru/Structure/Innov_vr/news.html?action=theme&tid=50
-  
-  http://vk.com/ptzschoolsit
-  
-  http://vk.com/technorobocom
-  
-  http://vk.com/sbi_petrsu
-  
-  http://vk.com/konovalov_ap
-  
-  http://www.petrsu.ru/Structure/SBI/announce.html?action=division&did=510
-  
-  https://twitter.com/SBIpetrsu
-  
-  http://vk.com/club70185285
+http://www.petrsu.ru/Structure/Innov_vr/news.html?action=theme&tid=50
+
+http://vk.com/ptzschoolsit
+
+http://vk.com/technorobocom
+
+http://vk.com/sbi_petrsu
+
+http://vk.com/konovalov_ap
+
+http://www.petrsu.ru/Structure/SBI/announce.html?action=division&did=510
+
+https://twitter.com/SBIpetrsu
+
+http://vk.com/club70185285
+
+http://www.petrsu.ru/print.html?action=preview&id=14343
+
+http://vk.com/fig_petrsu
 
 * reglament
   <2014-05-20 Tue 17:33>
